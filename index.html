@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Windows 95 Style</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="desktop" id="desktop">
+    <!-- Иконки рабочего стола -->
+    <div class="icon" style="top:20px; left:20px;" id="icon-computer">
+        <img src="My Computer-1.png">
+        <div>Мой Компьютер</div>
+    </div>
+
+<!-- Панель задач -->
+<div class="taskbar">
+    <!-- Логотип Windows -->
+    <button class="win-logo">
+        <img src="windows.png" alt="WinLogo">
+    </button>
+
+    <!-- Поиск -->
+    <div class="search-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search">
+        <span>Поиск</span>
+    </div>
+
+    <!-- Иконки приложений -->
+    <div class="taskbar-icons">
+        <div class="icon-btn" id="copilot-btn">
+            <img src="copilot.png" alt="Copilot">
+        </div>
+        <div class="icon-btn" id="mail-btn">
+            <img src="Mail.png" alt="Mail">
+            <div class="notification" id="mail-notif">1</div>
+        </div>
+        <div class="icon-btn" id="browser-btn">
+            <img src="microsoft-edge.png" alt="Browser">
+        </div>
+        <div class="icon-btn" id="folder-btn">
+            <img src="Files.png" alt="Folder">
+        </div>
+        <div class="icon-btn" id="telegram-btn">
+            <img src="Telegram.png" alt="Telegram">
+        </div>
+        <div class="icon-btn" id="discord-btn">
+            <img src="Discord.png" alt="Discord">
+        </div>
+    </div>
+
+    <!-- Часы -->
+    <div class="clock">
+        <div id="clock"></div>
+        <div id="date">14.02.2026</div>
+    </div>
+</div>
+
+<!-- Окно почты в стиле Windows 95 -->
+<div class="window mail-explorer" id="mail-window">
+
+    <div class="window-header">
+        <span>Mail</span>
+        <div>
+            <button class="win-btn close-btn" id="close-mail">X</button>
+        </div>
+    </div>
+
+    <div class="window-content" style="padding:0; display:flex; height:100%;">
+
+        <!-- ЛЕВАЯ ПАНЕЛЬ -->
+        <div style="
+            width:190px;
+            background:#c0c0c0;
+            border-right:2px solid #808080;
+            padding:6px;
+            box-sizing:border-box;
+        ">
+
+            <!-- КЛИКАБЕЛЬНЫЙ СЕРЫЙ ПРЯМОУГОЛЬНИК -->
+            <div id="valentinka-item" style="
+                background:#c0c0c0;
+                border-top:2px solid white;
+                border-left:2px solid white;
+                border-right:2px solid black;
+                border-bottom:2px solid black;
+                padding:6px;
+                font-size:12px;
+                cursor:pointer;
+                user-select:none;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            ">
+                <div>
+                    <b>Валентинка 💌</b><br>
+                    от Ильи
+                </div>
+                <!-- Красный кружок уведомления -->
+                <div style="
+                    width:14px;
+                    height:14px;
+                    background:red;
+                    color:white;
+                    font-size:10px;
+                    font-weight:bold;
+                    border-radius:50%;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                ">1</div>
+            </div>
+
+        </div>
+
+        <!-- ПРАВАЯ ПАНЕЛЬ -->
+        <div style="
+            flex:1;
+            background:#c0c0c0;
+            padding:8px;
+            box-sizing:border-box;
+        ">
+
+            <div id="valentinka-view" style="
+    display:none; /* скрыта по умолчанию */
+    background:#ffffff;
+    border:2px inset #808080;
+    padding:10px;
+    font-size:12px;
+    width:100%;
+    height:100%;
+    box-sizing:border-box;
+    text-align:center; /* текст по центру */
+">
+    <div style="max-width:90%; margin:0 auto;">
+        <b>Валентинка💟</b><br>
+        От Ильи<br>
+        Для Ани<br>
+        14 Февраля 2026<br><br>
+        - - - - - - - - - - - - - <br>
+        Привет, моя Зайка! 💖<br>
+        Эта маленькая валентинка для тебя — чтобы улыбка была на лице каждый день.<br>
+        Нажми на неё — там маленький сюрприз только для тебя. 🌸
+    </div>
+
+    <a href="https://wanderereggs.github.io/root/" target="_blank" style="
+        display:inline-block;
+        margin-top:0px;
+        width:48px;
+        height:48px;
+        cursor:pointer;
+    ">
+        <img src="Sprite-0001.png" alt="Конверт" style="width:130%; height:130%; image-rendering:pixelated;">
+    </a>
+</div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
