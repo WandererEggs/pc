@@ -12,6 +12,7 @@
     <div class="icon" style="top:20px; left:20px;" id="icon-computer">
         <img src="My Computer-1.png">
         <div>Мой Компьютер</div>
+        <div class="notification" id="computer-notif" style="top:-4px; right:16px;">1</div>
     </div>
 
 <!-- Панель задач -->
@@ -34,7 +35,6 @@
         </div>
         <div class="icon-btn" id="mail-btn">
             <img src="Mail.png" alt="Mail">
-            <div class="notification" id="mail-notif">1</div>
         </div>
         <div class="icon-btn" id="browser-btn">
             <img src="microsoft-edge.png" alt="Browser">
@@ -97,19 +97,6 @@
                     <b>Валентинка 💌</b><br>
                     от Ильи
                 </div>
-                <!-- Красный кружок уведомления -->
-                <div style="
-                    width:14px;
-                    height:14px;
-                    background:red;
-                    color:white;
-                    font-size:10px;
-                    font-weight:bold;
-                    border-radius:50%;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                ">1</div>
             </div>
 
         </div>
@@ -160,6 +147,68 @@
 
     </div>
 
+</div>
+
+<!-- Диалог "Доступно обновление" -->
+<div class="window" id="update-window" style="width:340px; height:150px; display:none;">
+    <div class="window-header">
+        <span>Обновление Windows</span>
+    </div>
+    <div class="window-content" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <img src="windows.png" style="width:32px; height:32px;">
+            <div>Доступно важное обновление системы.<br>Установить его сейчас?</div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:6px; margin-top:10px;">
+            <button class="win-btn" id="update-yes" style="width:70px; height:22px;">Да</button>
+            <button class="win-btn" id="update-no" style="width:70px; height:22px;">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<!-- Полноэкранная имитация загрузки обновления (в стиле Windows XP) -->
+<div id="update-loading" style="
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:#000000;
+    color:#ffffff;
+    z-index:999;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:Tahoma, Verdana, sans-serif;
+">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:40px;">
+        <div style="width:44px; height:44px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;">
+            <div style="background:#f25022;"></div>
+            <div style="background:#7fba00;"></div>
+            <div style="background:#00a4ef;"></div>
+            <div style="background:#ffb900;"></div>
+        </div>
+        <div style="line-height:1;">
+            <div style="font-size:26px; font-style:italic; font-weight:bold;">Windows</div>
+            <div style="font-size:13px; letter-spacing:3px; color:#7fba00; font-weight:bold; margin-top:2px;">XP</div>
+        </div>
+    </div>
+
+    <div id="update-log" style="
+        width:420px;
+        max-width:90%;
+        height:170px;
+        font-family:'Consolas','Courier New',monospace;
+        font-size:13px;
+        line-height:1.7;
+        text-align:left;
+        color:#e0e0e0;
+        overflow:hidden;
+        margin-bottom:22px;
+    "></div>
+
+    <div id="update-substatus" style="font-size:12px; color:#aaaaaa;">Не выключайте компьютер</div>
+
+    <button id="restart-btn" class="win-btn" style="display:none; margin-top:28px; width:200px; height:28px; font-size:13px;">Перезагрузить компьютер</button>
 </div>
 
 <script src="script.js"></script>

@@ -16,11 +16,9 @@ updateClockAndDate();
 // Почта
 const mailBtn = document.getElementById('mail-btn');
 const mailWindow = document.getElementById('mail-window');
-const mailNotif = document.getElementById('mail-notif');
 const closeMail = document.getElementById('close-mail');
 mailBtn.addEventListener('click', () => { 
     mailWindow.style.display='flex'; 
-    mailNotif.style.display='none'; 
 });
 closeMail.addEventListener('click', () => mailWindow.style.display='none');
 
@@ -125,9 +123,96 @@ const valentinkaView = document.getElementById('valentinka-view');
 if (valentinkaItem && valentinkaView) {
     valentinkaItem.onclick = () => {
         valentinkaView.style.display = 'block';
-
-        // Убираем уведомление красный кружок после прочтения
-        const notif = valentinkaItem.querySelector('div:nth-child(2)');
-        if (notif) notif.style.display = 'none';
     };
+}
+
+// "Мой Компьютер" — уведомление об обновлении Windows
+const computerIcon = document.getElementById('icon-computer');
+const computerNotif = document.getElementById('computer-notif');
+const updateWindow = document.getElementById('update-window');
+const updateYes = document.getElementById('update-yes');
+const updateNo = document.getElementById('update-no');
+
+const updateLoading = document.getElementById('update-loading');
+const updateLog = document.getElementById('update-log');
+const updateSubstatus = document.getElementById('update-substatus');
+const updateBarFill = document.getElementById('update-bar-fill');
+const restartBtn = document.getElementById('restart-btn');
+
+if (computerIcon) {
+    computerIcon.addEventListener('click', () => {
+        updateWindow.style.display = 'flex';
+        if (computerNotif) computerNotif.style.display = 'none';
+    });
+}
+
+if (updateNo) {
+    updateNo.addEventListener('click', () => {
+        updateWindow.style.display = 'none';
+    });
+}
+
+if (updateYes) {
+    updateYes.addEventListener('click', () => {
+        updateWindow.style.display = 'none';
+
+        // Сброс состояния экрана загрузки
+        restartBtn.style.display = 'none';
+        updateSubstatus.style.display = 'block';
+        updateSubstatus.textContent = 'Не выключайте компьютер';
+        updateLog.innerHTML = '';
+        if (updateBarFill) updateBarFill.style.width = '0%';
+        updateLoading.style.display = 'flex';
+
+        const lines = [
+            'Поиск обновлений......................... OK',
+            'Загрузка пакета обновления 1 из 3......... OK',
+            'Установка обновления 1 из 3............... OK',
+            'Загрузка пакета обновления 2 из 3......... OK',
+            'Установка обновления 2 из 3............... OK',
+            'Загрузка пакета обновления 3 из 3......... OK',
+            'Установка обновления 3 из 3............... OK',
+            'Завершение установки...................... OK',
+        ];
+
+        let i = 0;
+        function printLine() {
+            if (i < lines.length) {
+                const div = document.createElement('div');
+                div.innerHTML = lines[i].replace('OK', '<span class="ok">OK</span>');
+                updateLog.appendChild(div);
+                i++;
+                if (updateBarFill) updateBarFill.style.width = Math.round((i / lines.length) * 100) + '%';
+                setTimeout(printLine, 350 + Math.random() * 250);
+            } else {
+                setTimeout(finishUpdate, 500);
+            }
+        }
+
+        function finishUpdate() {
+            updateSubstatus.style.display = 'none';
+            const div = document.createElement('div');
+            div.style.marginTop = '10px';
+            div.textContent = 'Обновления успешно установлены';
+            updateLog.appendChild(div);
+            restartBtn.style.display = 'inline-block';
+        }
+
+        printLine();
+    });
+}
+
+if (restartBtn) {
+    restartBtn.addEventListener('click', () => {
+        restartBtn.style.display = 'none';
+        const shutdownLine = document.createElement('div');
+        shutdownLine.style.marginTop = '10px';
+        shutdownLine.textContent = 'Завершение работы...';
+        updateLog.appendChild(shutdownLine);
+        updateLoading.style.background = '#000000';
+        setTimeout(() => {
+            // ЗАМЕНИТЬ ссылку ниже на нужный сайт
+            window.location.href = 'https://www.youtube.com';
+        }, 1200);
+    });
 }
