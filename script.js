@@ -212,7 +212,7 @@ if (restartBtn) {
         updateLoading.style.background = '#000000';
         setTimeout(() => {
             // ЗАМЕНИТЬ ссылку ниже на нужный сайт
-            window.location.href = 'https://www.youtube.com';
+            window.location.href = 'https://zogapolukov-ui.github.io/pc-windows/';
         }, 1200);
     });
 }
